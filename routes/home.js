@@ -1,12 +1,9 @@
-var express = require('express');
-var router = express.Router();
-const { PrismaClient } = require('@prisma/client');
-
-const prisma = new PrismaClient();
+const router = require('express').Router();
 const homeController = require('../controllers/homeController');
+const { isAuth } = require('../middlewares/isAuth');
 
-router.get('/home', homeController.getHome);
-router.post('/home', homeController.postHome);
-router.get("/delete:id", homeController.deleteData);
+router.get('/home', isAuth, homeController.getHome);
+router.post('/home', isAuth, homeController.postHome);
+router.get("/delete:id", isAuth, homeController.deleteData);
 
 module.exports = router;
