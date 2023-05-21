@@ -5,7 +5,7 @@ exports.getSelect = async function (req, res) {
   const id = String(req.params.id);
 
     const data = await prisma.data.findUnique({
-      where: { id: (id) },
+      where: { id },
       select: {
         id: true,
         keyA: true,
@@ -21,7 +21,7 @@ exports.getSelect = async function (req, res) {
         civilStatus: true,
       },
     });
-    if (data == null) {
+    if (!data) {
       res.status(404).send("Data not found");
     } else {
       const { id, keyA, keyB, lastName, firstName, middleName, gender, birthdate, hobbies, address, zip, civilStatus } = data;

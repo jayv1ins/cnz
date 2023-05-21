@@ -2,11 +2,11 @@ const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
 
-exports.getLogin = (req, res) => {
+exports.index = (req, res) => {
   res.render('login');
 };
 
-exports.postLogin = async (req, res) => {
+exports.login = async (req, res) => {
   const { email, password } = req.body;
 
   if (email && password) {
@@ -35,7 +35,8 @@ exports.postLogin = async (req, res) => {
         console.log('Decrypted password:', cryptedPassword);
         console.log('Stored password:', encryptedPassword);
         if (cryptedPassword === encryptedPassword) {
-          res.render('home');
+          req.session.user = user;
+          res.redirect("/home"); // Redirect to the home page or any desired location);
         } else {
           res.render('login', { errorMessage: 'Incorrect Password!' });
         }

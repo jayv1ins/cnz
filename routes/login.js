@@ -1,11 +1,7 @@
-var express = require('express');
-var router = express.Router();
-const { PrismaClient } = require('@prisma/client');
-
-const prisma = new PrismaClient();
+const router = require('express').Router();
 const loginController = require('../controllers/loginController');
 
-router.get('/login', loginController.getLogin);
-router.post('/login', loginController.postLogin);
+router.get('/login', loginController.index);
+router.post('/login', loginController.login);
 
 module.exports = router;
