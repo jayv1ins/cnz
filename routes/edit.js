@@ -1,11 +1,8 @@
-var express = require('express');
-var router = express.Router();
-const { PrismaClient } = require('@prisma/client');
-
-const prisma = new PrismaClient();
+const router = require('express').Router();
 const editController = require('../controllers/editController');
+const { isAuth } = require('../middlewares/isAuth');
 
-router.get('/edit/:id', editController.getEdit);
-router.post('/edit/:id', editController.updatedData);
+router.get('/edit/:id', isAuth, editController.getEdit);
+router.post('/edit/:id', isAuth, editController.updatedData);
 
 module.exports = router;
