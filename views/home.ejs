@@ -456,15 +456,15 @@
                             
                                 <td>
                                   <a class="btn view-btn" href="/select/<%= data.id %>"><i class="fas fa-eye"></i> View</a>
-                              <% if (user && user.usertype === 'Admin') { %>
+                           <!--   <% if (user && user.usertype === 'Admin') { %> -->
 
                                   <a class="btn delete-btn" href="/edit/<%= data.id %>"><i class="fas fa-edit"></i> Edit</a>
                                   <form action="/delete<%= data.id %>" method="POST">
                                     <button class="btn edit-btn" type="submit"><i class="fas fa-trash"></i> Delete</button>
                                   </form>
                                 </td>
-                              <% } else { %>
-                              <% } %>
+                           <!--      <% } else { %>
+                              <% } %> -->
                             </tr>
                           <% }); %>
                           </tbody>
