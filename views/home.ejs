@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>Illumiel</title>
-        <link rel="stylesheet" href="style.css">
 
         <style>
             body {
@@ -406,8 +405,8 @@
                   <div class="action-link-wrap">
                     <li><a href="#Table">Table</a></li>
                     <li><a href="#Form">Form</a></li>
+                    <li><a href="/logout">Logout</a></li>
 
-                    <li><a onclick="history.back(-1)" class="link-button link-back-button">Go Back</a></li>
                   </div>
                 </ul>
             </nav>
@@ -446,12 +445,18 @@
                               <td><%= data.address %></td>
                               <td><%= data.zip %></td>
                               <td><%= data.civilStatus %></td>
-                              <td> <a class="btn view-btn" href="/select/<%= data.id %>"> <i class="fas fa-eye"></i> View</a>
-                               <a class="btn delete-btn" href="/edit/<%= data.id %>"> <i class="fas fa-edit"></i> Edit</a>                    
+                            
+                                <td>
+                                  <a class="btn view-btn" href="/select/<%= data.id %>"><i class="fas fa-eye"></i> View</a>
+                              <% if (user && user.usertype === 'Admin') { %>
+
+                                  <a class="btn delete-btn" href="/edit/<%= data.id %>"><i class="fas fa-edit"></i> Edit</a>
                                   <form action="/delete<%= data.id %>" method="POST">
                                     <button class="btn edit-btn" type="submit"><i class="fas fa-trash"></i> Delete</button>
                                   </form>
                                 </td>
+                              <% } else { %>
+                              <% } %>
                             </tr>
                           <% }); %>
                           </tbody>

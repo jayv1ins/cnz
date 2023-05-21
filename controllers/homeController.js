@@ -40,7 +40,7 @@ exports.getHome = async function(req, res) {
         civilStatus,
       };
     });
-    res.render('home', { title: 'Express', datas: datas });
+    res.render('home', { title: 'Express', datas: datas, user: req.user  });
 };
 
 function findModInverse(a, m) {
