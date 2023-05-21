@@ -1,16 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+ 
 
-
-Number of users: <%= students.length %>
-<ul>
-
-  <% students.forEach((student) => {%>
-  <li> name: <b><%= student.name %></b></li>
-  <li> program: <b><%= student.program %></b></li>
-  <li> yearLevel: <b><%= student.yearlevel %></b></li>
-  <li> gender: <b><%= student.gender %></b></li>
-  <br>
-  <% }) %>
-  </ul>
-
-
-
+    <% if (datas.length > 0) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Gender</th>
+            <th>Birthdate</th>
+            <th>Hobbies</th>
+            <th>Address</th>
+            <th>Zip</th>
+            <th>Civil Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% datas.forEach(function(data) { %>
+          <tr>
+            <td><%= data.id %></td>
+            <td><%= data.lastName %></td>
+            <td><%= data.firstName %></td>
+            <td><%= data.middleName %></td>
+            <td><%= data.gender %></td>
+            <td><%= data.birthdate %></td>
+            <td><%= data.hobbies %></td>
+            <td><%= data.address %></td>
+            <td><%= data.zip %></td>
+            <td><%= data.civilStatus %></td>
+            <td> <a href="/edit/<%= data.id %>">Edit</a></td>
+            <td>
+              <form action="/delete/<%= data.id %>" method="POST"  onsubmit="console.log('Deleting data with ID ' + '<%= data.id %>')">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete</button>
+              </form>
+              
+            </td>
+            
+          </tr>
+        <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>No data found.</p>
+    <% } %>
+</body>
+</html>

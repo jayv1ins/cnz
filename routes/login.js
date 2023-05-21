@@ -3,9 +3,9 @@ var router = express.Router();
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const loginController = require('../controllers/loginController');
+
+router.get('/login', loginController.getLogin);
+router.post('/login', loginController.postLogin);
 
 module.exports = router;

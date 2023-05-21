@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
+
+const selectController = require('../controllers/selectController');
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/select/:id', selectController.getSelect);
 
 module.exports = router;
