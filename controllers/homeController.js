@@ -12,11 +12,11 @@ exports.getHome = async function(req, res) {
         for (let i = 0; i < str.length; i++) {
           const charCode = str.charCodeAt(i);
           if (charCode >= 65 && charCode <= 90) { // uppercase letters
-            const decryptedCharCode = (modInvA * (charCode + 26 - 65 - keyB)) % 26 + 65;
-            result += String.fromCharCode(decryptedCharCode);
+            const encryptedCharCode = (keyA * (charCode - 65) + keyB) % 26 + 65;
+            result += String.fromCharCode(encryptedCharCode);
           } else if (charCode >= 97 && charCode <= 122) { // lowercase letters
-            const decryptedCharCode = (modInvA * (charCode + 26 - 97 - keyB)) % 26 + 97;
-            result += String.fromCharCode(decryptedCharCode);
+            const encryptedCharCode = (keyA * (charCode - 97) + keyB) % 26 + 97;
+            result += String.fromCharCode(encryptedCharCode);
           } else {
             result += str[i];
           }
