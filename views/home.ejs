@@ -103,27 +103,22 @@
                 background-image: url('https://www.tastingtable.com/img/gallery/20-different-types-of-coffee-explained/l-intro-1659544996.jpg');
             }
 
-            #Table {
+            #Form {
                 background-image: linear-gradient(rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.75)), url('https://www.allrecipes.com/thmb/gk1cHP21-syS3M_dz1cr6DWxhfE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/GettyImages-1165807395-2000-28ea3eaf72f34ddaa97d9a54ca0c6025.jpg');
             }
 
-            #Form {
-                background-image:  linear-gradient(rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.75)), url('https://www.health.com/thmb/FXuIRYC5THBEHB0ICA6ySTDje8o=/2000x0/filters:no_upscale():max_bytes(150000):strip_icc()/cooffees-nathan-dumlao-6VhPY27jdps-unsplash-2000-7ab18521a3964bbba4a0832e8aa4014f.jpg');
+            #gameplay {
+                background-image: url('https://www.health.com/thmb/FXuIRYC5THBEHB0ICA6ySTDje8o=/2000x0/filters:no_upscale():max_bytes(150000):strip_icc()/cooffees-nathan-dumlao-6VhPY27jdps-unsplash-2000-7ab18521a3964bbba4a0832e8aa4014f.jpg');
             }
 
-            #contact {
-                background-image: linear-gradient(rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.75)), url('https://thehill.com/wp-content/uploads/sites/2/2022/09/CA_coffee_09302022istock.jpg?w=1280&h=720&crop=1');
+            #Table {
+                background-color: rgb(255, 247, 237);
             }
 
             form {
 			max-width: 500px;
 			margin: 0 auto;
 			font-size: 18px;
-			  
-			    top: 0;
-			    left: 0;
-			    z-index: 2;
-            
             }
 
             input[type=text], select, input[type=date], input[type=email], textarea {
@@ -346,11 +341,14 @@
             }
 
             .container {
+                margin-left: -16%;
+                width: 130%;
                 border-radius: 5px;
                 background-color: rgba(255, 255, 255, 0.5);
                 backdrop-filter: blur(5px);
                 padding: 20px;
-		
+                column-count: 3;
+                column-gap: 20px;
             }
 
             .error {
@@ -419,14 +417,12 @@
         </header>
         <main>
             <section id="Table">
-                <div class="container">
-
-                   
+                <div class="container1">
                     <% if (datas.length > 0) { %>
                         <table>
                           <thead>
                             <tr>
-                                <th>Id</th>
+                              <th>Id</th>
                               <th>Last Name</th>
                               <th>First Name</th>
                               <th>Middle Name</th>
@@ -456,14 +452,13 @@
                             
                                 <td>
                                   <a class="btn view-btn" href="/select/<%= data.id %>"><i class="fas fa-eye"></i> View</a>
-                       
 
                                   <a class="btn delete-btn" href="/edit/<%= data.id %>"><i class="fas fa-edit"></i> Edit</a>
                                   <form action="/delete<%= data.id %>" method="POST">
                                     <button class="btn edit-btn" type="submit"><i class="fas fa-trash"></i> Delete</button>
                                   </form>
                                 </td>
-                      
+                           <!--  -->
                             </tr>
                           <% }); %>
                           </tbody>
@@ -572,11 +567,37 @@
                 
             </section>
 
-            <section id="contact">
-                <div class="section-inner">
-                  
+            <section id="gameplay">
+                
+                <div class="flex">
+                    <span class="badge new content">Photography</span>
+                    <div class="box">
+                        <span class="badge new hero">Lots of option</span>
+                        <div class="newhero-image">
+                            <img src="https://www.barniescoffee.com/cdn/shop/articles/bar-1869656_1920_480x540_crop_center.jpg?v=1660683986"/>
+                        </div>
+                        
+                        <div class="newhero-content">
+                            <h3>Coffee Menu</h3>
+                            <div><label>Our coffee shop menu offers a diverse selection of expertly brewed coffees, from classic favorites to specialty creations. Accompanied by a tempting array of pastries and snacks, our menu guarantees a memorable and satisfying experience for all coffee enthusiasts.</label></div>
+                        </div>
+                    </div>
+    
+                    <div class="box">
+                        <span class="badge new artifact">Great Environment</span>
+                        <div class="newheroartifact-image">
+                            <img src="https://i.pinimg.com/originals/0f/c7/e9/0fc7e9f063ce3f3da1cd2fa4c3b0e721.png"/>
+                        </div>
+    
+                        <div class="newartifact-content">
+                            <h3>Work and study zone</h3>
+                            <div><label>Discover a coffee shop designed for work and study. Enjoy exceptional coffee, comfortable seating, and free Wi-Fi in a productive environment. Fuel your focus and productivity with our delicious beverages. Find the perfect balance of ambiance and functionality in our dedicated work and study zone.</label></div>
+                        </div>
+                    </div>
                 </div>
+
             </section>
+
         </main>
         <footer>
         </footer>
