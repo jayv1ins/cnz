@@ -9,18 +9,19 @@ exports.getHome = async function(req, res) {
       const affineDecrypt = (str) => {
         let result = '';
         const modInvA = findModInverse(keyA, 26);
-        for (let i = 0; i < str.length; i++) {
+      for (let i = 0; i < str.length; i++) {
           const charCode = str.charCodeAt(i);
           if (charCode >= 65 && charCode <= 90) { // uppercase letters
-            const encryptedCharCode = (keyA * (charCode - 65) + keyB) % 26 + 65;
-            result += String.fromCharCode(encryptedCharCode);
+            const decryptedCharCode = (modInvA * (charCode + 26 - 65 - keyB)) % 26 + 65;
+            result += String.fromCharCode(decryptedCharCode);
           } else if (charCode >= 97 && charCode <= 122) { // lowercase letters
-            const encryptedCharCode = (keyA * (charCode - 97) + keyB) % 26 + 97;
-            result += String.fromCharCode(encryptedCharCode);
+            const decryptedCharCode = (modInvA * (charCode + 26 - 97 - keyB)) % 26 + 97;
+            result += String.fromCharCode(decryptedCharCode);
           } else {
             result += str[i];
           }
         }
+        return result;
         return result;
       };
       const decryptedLastName = affineDecrypt(lastName, keyA, keyB);
